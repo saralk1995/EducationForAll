@@ -1,0 +1,44 @@
+﻿@model WebApplication1.Models.ReviewViewModel
+
+<h2>Review Page</h2>
+
+@using (Html.BeginForm("addReview", "Student", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <h4>Give rating to course</h4>
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(m=>m.selectedCourse,new {@class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.selectedCourse, Model.courseList.Select(item => new SelectListItem
+            {
+                Value = item.ToString(),
+                Text = item.ToString()
+            }))
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.review.ReviewComment, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.review.ReviewComment, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.review.ReviewStar, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.EditorFor(m => m.review.ReviewStar, new { htmlAttributes = new { @class = "form-control", } })
+
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Add Review" />
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

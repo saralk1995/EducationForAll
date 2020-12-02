@@ -1,0 +1,130 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@if (User.IsInRole("Student"))
+{
+    <div class="jumbotron hero-wrapper">
+        <h1>Student Index Page</h1>
+        <p class="lead">On this page student can Enrol for new Courses,Give rating for enrolled courses and view his profile</p>
+    </div>
+    <div class="row">
+    </div>
+    <div class="tile-wrapper">
+        <div class="col-md-3 tile">
+            <h2>Courses Enrolled by you</h2>
+            <p>Courses Enrolled by you</p>
+            <input type="button" class="btn" value="Courses Enrolled" onclick="location.href='@Url.Action("EnrolCourse", "Student")'" />
+        </div>
+        <div class="col-md-3 tile">
+            <h2>Enrol for new Course</h2>
+            <p>Enrol for new Exciting Courses</p>
+            <input type="button" class="btn" value="Enrol New Course" onclick="location.href='@Url.Action("EnrolCourse", "Student")'" />
+        </div>
+        <div class="col-md-3 tile">
+            <h2>Give rating to Enrolled Courses</h2>
+            <p>Give rating to Courses so that instructor can improve their Course Structure</p>
+            <input type="button" class="btn" value="Give rating" onclick="location.href='@Url.Action("addReview", "Student")'" />
+        </div>
+        <div class="col-md-3 tile">
+            <h2>View Profile</h2>
+            <p>View Profile and can make changes to it</p>
+            <input type="button" class="btn" value="View Profile" onclick="location.href='@Url.Action("StudentProfile", "Student")'" />
+        </div>
+    </div>
+
+}
+else if (User.IsInRole("Instructor"))
+{
+    <div class="jumbotron hero-wrapper">
+        <h1>Instructor Index Page</h1>
+        <p class="lead">On this page Instructor can add new Courses,View rating for courses,view enrolled students details,view his profile</p>
+    </div>
+    <div class="row">
+    </div>
+    <div class="tile-wrapper">
+        <div class="col-md-3 tile">
+            <h2 class="tile-heading">Add new Course</h2>
+            <p>Add new Updated Couses</p>
+            <input class="btn" type="button" value="Add Course" onclick="location.href='@Url.Action("AddCourse", "Instructor")'" />
+        </div>
+        <div class="col-md-3 tile">
+            <h2 class="tile-heading">View rating of course</h2>
+            <p>View ratings given by students</p>
+            <input class="btn" type="button" value="View Ratings" onclick="location.href='@Url.Action("aggregateRatings", "Instructor")'" />
+        </div>
+        <div class="col-md-3 tile">
+            <h2 class="tile-heading">View Enrolled Students</h2>
+            <p>View list of enrolled students</p>
+            <input class="btn" type="button" value="View Enrolled Students" onclick="location.href='@Url.Action("ViewStudents", "Instructor")'" />
+        </div>
+        <div class="col-md-3 tile">
+            <h2 class="tile-heading">Send Bulk Email</h2>
+            <p>View list of enrolled students</p>
+            <input class="btn" class="btn" type="button" value="Send Bulk Email" onclick="location.href='@Url.Action("SendBulk", "Instructor")'" />
+        </div>
+        <div class="col-md-3 tile">
+            <h2 class="tile-heading">Add Event</h2>
+            <p>View list of enrolled students</p>
+            <input class="btn" type="button" value="Add Event" onclick="location.href='@Url.Action("addEvent", "Instructor")'" />
+        </div>
+    </div>
+
+}
+else
+{
+    <div class="jumbotron index">
+        <h1>Education For All</h1>
+        <p class="lead">EducationForAll is an Online Portal which helps to build the competency of students in the field of technology and helps them to take a next step in their career. Instructors from around the world have added a systematically managed content on the portal which makes it easier for the students to follow and build their knowledge level.</p>
+    </div>
+    <style>
+        .index {
+            background-color: #fff;
+            color: black
+        }
+    </style>
+}
+<style>
+    .hero-wrapper {
+        text-align: center;
+        background: transparent;
+        color: white;
+    }
+
+    .tile-heading {
+        min-height: 65px;
+        font-size: 20px
+    }
+
+    .tile {
+        background-color: #fff;
+        color: #3c4043;
+        border-radius: 4px;
+        box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);
+        padding: 24px;
+        margin: 16px
+    }
+
+    .btn {
+        background: transparent;
+        border-color: lightgrey;
+        border-radius: 4px;
+    }
+
+        .btn:hover {
+            background: #1c62c4;
+            color: white;
+        }
+
+    .tile-wrapper {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    html {
+        height: 100%;
+    }
+
+    body {
+        height: 100%;
+        background: radial-gradient(at 50% 33%,#1f6adb 0,#1f6cd8 .1%,#1e68d0 15.5%,#1c62c4 22.5%,#1a5ab4 29%,#1751a2 35.3%,#14478e 41.2%,#113c78 47.1%,#0e3162 52.9%,#0b264d 58.8%,#081c39 64.7%,#051326 71%,#030b17 77.5%,#02050b 84.5%,#000103 91.9%,#000 100%)
+    }

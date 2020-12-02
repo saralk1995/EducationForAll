@@ -1,0 +1,65 @@
+﻿@model IEnumerable<WebApplication1.Models.Cours>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseDuration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseStartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseFee)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseDomain)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseTags)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Instructor.InstructorName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseDuration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseStartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseFee)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseDomain)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseTags)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Instructor.InstructorName)
+            </td>
+            <td>
+                @Html.ActionLink("View Ratings", "ViewGraph", "Instructor", new { id = item.CourseName })
+            </td>
+        </tr>
+    }
+
+</table>

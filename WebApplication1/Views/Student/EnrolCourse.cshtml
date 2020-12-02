@@ -1,0 +1,85 @@
+﻿@model IEnumerable<WebApplication1.Models.Cours>
+<h1>View Courses</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseId);
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseDuration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseStartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseFee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseDomain)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseTags)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Instructor.InstructorName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseDuration)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseStartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseStatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseFee)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseDomain)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseTags)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Instructor.InstructorName)
+                </td>
+                <td>
+                    @Html.ActionLink("Enrol Course", "EnrolCourse1", "Student", new { id = item.CourseId }, new { })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section Scripts {
+
+    @Scripts.Render("~/Scripts/DataTables/jquery.dataTables.js")
+    @Scripts.Render("~/Scripts/DataTables/dataTables.bootstrap.js")
+    <script>
+        $(document).ready(function () {
+            $('.table').DataTable();
+        });
+    </script>
+}
+<link href="~/Content/DataTables/css/dataTables.bootstrap.min.css"
+      rel="stylesheet" />

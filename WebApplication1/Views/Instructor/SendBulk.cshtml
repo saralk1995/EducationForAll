@@ -1,0 +1,89 @@
+﻿@model WebApplication1.Models.BulkMail
+<!DOCTYPE html>
+<html>
+<body>
+    <div class="wrapper">
+        <div class="box">
+            <h2 class="header">Send Email</h2>
+            @using (@Html.BeginForm("SendBulk", "Instructor", FormMethod.Post, new { @id = "form1", @enctype = "multipart/form-data" }))
+
+            {
+
+                @Html.ValidationSummary()
+                <table>
+                    <tr>
+                        <td>
+                            Subject:
+
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.Subject)
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Body:
+
+                        </td>
+                        <td>
+                            @Html.TextAreaFor(m => m.Body)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Password:
+                        </td>
+                        <td>
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                        </td>
+                    </tr>
+                </table>
+                <input type="submit" value="Send" class="btn" />
+
+            }
+
+
+        </div>
+    </div>
+</body>
+<style>
+    html, body,.body-content {
+        height: 100%;
+    }
+
+    .wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+    .box {
+        background-color: #fff;
+        color: #3c4043;
+        border-radius: 4px;
+        box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);
+        padding: 24px;
+        margin: 16px;
+        height:250px;
+        padding:20px 70px;
+
+    }
+    .header
+    {
+        text-align:center;
+        margin-top:0px;
+        margin-bottom:20px
+    }
+    .btn {
+        background: transparent;
+        border-color: lightgrey;
+        border-radius: 4px;
+        position:absolute;
+        left:50%;
+        transform:translateY(-50);
+        margin-top:18px;
+    }
+</style>
+</html>

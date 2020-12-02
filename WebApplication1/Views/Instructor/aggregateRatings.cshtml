@@ -1,0 +1,41 @@
+﻿@model WebApplication1.Models.aggregateRatings
+
+@using (@Html.BeginForm("aggregateRatings1", "Instructor", FormMethod.Post, new { @id = "form1", @enctype = "multipart/form-data" }))
+
+{
+
+    @Html.ValidationSummary()
+    <table>
+        <tr>
+            <td>
+                Select Course
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.selectedCourse, Model.courseList.Select(item => new SelectListItem
+           {
+               Value = item.ToString(),
+               Text = item.ToString()
+           }))
+            </td>
+
+        </tr>
+
+    </table>
+    <input type="submit" value="ShowRatingsStatistics" name="submitButton" class="btn"/>
+    <input type="submit" value="ShowOverallGraph" name="submitButton" class="btn"/>
+
+}
+<style>
+    .btn {
+        background: transparent;
+        border-color: lightgrey;
+        border-radius: 4px;
+        margin-top:16px;
+    }
+
+        .btn:hover {
+            background: #1c62c4;
+            color: white;
+        }
+
+</style>
